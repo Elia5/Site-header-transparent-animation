@@ -1,2 +1,2 @@
 # Site-template
-my template
+Here is my site template
