@@ -30,25 +30,28 @@ $('body').append('<button class="upbtn">');
 		}
 	});
 
-});
+
 
 function ScrollManager() {
-	checkScroll.prevScroll = 0;
-	checkScroll.curScroll = null;
+	
 		function checkScroll () {
 			var self = arguments.callee;
-			self.curScroll = window.pageYOffset || document.documentElement.scrollTop;
-			var deltaScroll = self.curScroll - self.prevScroll;
-			if (deltaScroll) {
+			currScroll = window.pageYOffset || document.documentElement.scrollTop;
+			var currDelta = currScroll - self.prevScroll;
+			if (!self.prevDelta && currDelta) {
 				$('#wrapper').animate({opacity: 0.1}, 0);
 			}
-			else {
+			if (self.prevDelta && !currDelta){
 				$('#wrapper').animate({opacity: 1}, 200);
 			}
-			self.prevScroll = self.curScroll;
+			self.prevScroll = currScroll;
+			self.prevDelta = currDelta;
 		};
+	checkScroll.prevScroll = 0;
+	checkScroll.prevDelta = 0;
 	return checkScroll;
 }
 
 
 setInterval(ScrollManager(), 200);
+});
