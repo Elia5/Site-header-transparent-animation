@@ -33,21 +33,20 @@ $(document).ready(function(){
 
 
 	function ScrollManager() {
+		var prevScroll = 0,
+		    prevDelta = 0;
 		function checkScroll () {
-			var self = arguments.callee;
-			currScroll = window.pageYOffset || document.documentElement.scrollTop;
-			var currDelta = currScroll - self.prevScroll;
-			if (!self.prevDelta && currDelta) {
+			var currScroll = window.pageYOffset || document.documentElement.scrollTop,
+			    currDelta = currScroll - prevScroll;
+			if (!prevDelta && currDelta) {
 				$('#wrapper').animate({opacity: 0.1}, 0);
 			}
-			if (self.prevDelta && !currDelta){
+			if (prevDelta && !currDelta){
 				$('#wrapper').animate({opacity: 1}, 200);
 			}
-			self.prevScroll = currScroll;
-			self.prevDelta = currDelta;
+			prevScroll = currScroll;
+			prevDelta = currDelta;
 		};
-		checkScroll.prevScroll = 0;
-		checkScroll.prevDelta = 0;
 		return checkScroll;
 	}
 
