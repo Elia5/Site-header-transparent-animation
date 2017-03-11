@@ -14,7 +14,7 @@ $(document).ready(function(){
 	});
 
 
-$('body').append('<button class="upbtn">');
+	$('body').append('<button class="upbtn">');
 
 	$('.upbtn').click(function(){
 		$('body,html').animate({scrollTop: 0}, 1000);
@@ -32,8 +32,7 @@ $('body').append('<button class="upbtn">');
 
 
 
-function ScrollManager() {
-	
+	function ScrollManager() {
 		function checkScroll () {
 			var self = arguments.callee;
 			currScroll = window.pageYOffset || document.documentElement.scrollTop;
@@ -47,11 +46,10 @@ function ScrollManager() {
 			self.prevScroll = currScroll;
 			self.prevDelta = currDelta;
 		};
-	checkScroll.prevScroll = 0;
-	checkScroll.prevDelta = 0;
-	return checkScroll;
-}
+		checkScroll.prevScroll = 0;
+		checkScroll.prevDelta = 0;
+		return checkScroll;
+	}
 
-
-setInterval(ScrollManager(), 200);
+	setInterval(ScrollManager(), 200);
 });
