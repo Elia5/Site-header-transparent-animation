@@ -1,2 +1,2 @@
-# Site-header transparant animation
+# Site-header transparent animation
 Here is it
